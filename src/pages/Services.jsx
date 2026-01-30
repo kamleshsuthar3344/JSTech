@@ -1,82 +1,113 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Search, PenTool, Share2, Mail, Layout, TrendingUp } from 'lucide-react';
+import { Layout, Smartphone, PenTool, ShoppingCart, Database, TrendingUp, CheckCircle, Code, Server, Globe } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 export default function Services() {
     const services = [
         {
-            icon: <Search className="w-8 h-8 text-blue-400" />,
-            title: "SEO Optimization",
-            desc: "Rank higher on Google and drive organic traffic with our data-backed SEO strategies.",
+            id: "web-dev",
+            icon: <Code className="w-10 h-10 text-blue-500" />,
+            title: "Web Development",
+            desc: "Custom websites built with modern technologies like React, Next.js, and Node.js.",
+            features: ["SPA Development", "Progressive Web Apps", "Performance Optimization", "SEO Friendly"]
         },
         {
-            icon: <Share2 className="w-8 h-8 text-pink-500" />,
-            title: "Social Media Marketing",
-            desc: "Engage your audience on Instagram, LinkedIn, and Twitter with viral content.",
+            id: "ui-ux",
+            icon: <PenTool className="w-10 h-10 text-purple-500" />,
+            title: "UI/UX Design",
+            desc: "Intuitive and beautiful user interfaces that provide an exceptional user experience.",
+            features: ["Wireframing", "Prototyping", "User Research", "Visual Design"]
         },
         {
-            icon: <Layout className="w-8 h-8 text-purple-500" />,
-            title: "Web Design & Dev",
-            desc: "Stunning, fast, and responsive websites that convert visitors into customers.",
+            id: "app-dev",
+            icon: <Smartphone className="w-10 h-10 text-pink-500" />,
+            title: "App Development",
+            desc: "Responsive and cross-platform mobile applications for every device.",
+            features: ["Cross-platform (Flutter)", "Native Performance", "Mobile First approach", "iOS & Android"]
         },
         {
-            icon: <Mail className="w-8 h-8 text-yellow-500" />,
-            title: "Email Marketing",
-            desc: "Automated flows and newsletters that nurture leads and boost retention.",
+            id: "wordpress",
+            icon: <Layout className="w-10 h-10 text-orange-500" />,
+            title: "WordPress Solutions",
+            desc: "Custom WordPress themes, plugins, and e-commerce stores tailored to your needs.",
+            features: ["Theme Customization", "Plugin Development", "WooCommerce", "Easy Maintenance"]
         },
         {
-            icon: <PenTool className="w-8 h-8 text-green-500" />,
-            title: "Content Strategy",
-            desc: "Blogs, whitepapers, and copy that establishes your brand as an authority.",
+            id: "backend",
+            icon: <Server className="w-10 h-10 text-green-500" />,
+            title: "Backend Development",
+            desc: "Robust API development and database management for scalable applications.",
+            features: ["REST APIs", "GraphQL", "Database Design", "Secure Architecture"]
         },
         {
-            icon: <TrendingUp className="w-8 h-8 text-red-500" />,
-            title: "PPC Advertising",
-            desc: "Instant traffic with high-ROI campaigns on Google Ads and Facebook Ads.",
-        },
+            id: "digital-growth",
+            icon: <TrendingUp className="w-10 h-10 text-indigo-500" />,
+            title: "Digital Growth",
+            desc: "Optimizing your digital presence for maximum impact and conversion.",
+            features: ["SEO Strategies", "Analytics & Tracking", "Conversion Optimization", "Brand Strategy"]
+        }
     ];
 
     return (
-        <div className="pt-32 pb-20">
+        <div className="pt-24 pb-20">
             <Helmet>
-                <title>Services | JS_Tech Business Solutions</title>
+                <title>Premium Services | JS_Tech Business Solutions</title>
             </Helmet>
 
-            <div className="container">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Expertise</h1>
-                    <p className="text-xl text-slate-400">
-                        Comprehensive digital solutions tailored to your business goals.
+            {/* Hero */}
+            <section className="py-16">
+                <div className="container text-center max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                        Premium Services <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Tailored for Growth</span>
+                    </h1>
+                    <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+                        Comprehensive digital solutions tailored to elevate your business. We deliver excellence in every pixel and line of code.
                     </p>
                 </div>
+            </section>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-                    {services.map((s, index) => (
-                        <div key={index} className="glass-card p-8 group hover:bg-slate-800/80 transition-all hover:-translate-y-2">
-                            <div className="mb-6 p-4 bg-slate-900/50 rounded-xl w-fit group-hover:scale-110 transition-transform">
-                                {s.icon}
+            {/* Services List */}
+            <section className="container py-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map((service) => (
+                        <div key={service.id} className="glass-card p-8 border border-slate-700/50 hover:border-primary/50 transition-all hover:-translate-y-2 duration-300">
+                            <div className="mb-6 p-4 bg-slate-800/80 rounded-2xl inline-block shadow-lg">{service.icon}</div>
+                            <h2 className="text-2xl font-bold mb-4 text-white">{service.title}</h2>
+                            <p className="text-lg text-slate-400 mb-8 leading-relaxed h-24">
+                                {service.desc}
+                            </p>
+                            <div className="space-y-3 mb-8">
+                                {service.features.map(f => (
+                                    <div key={f} className="flex items-center gap-3 text-sm font-medium text-slate-300">
+                                        <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                                        {f}
+                                    </div>
+                                ))}
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
-                            <p className="text-slate-400 mb-6">{s.desc}</p>
-                            <Button to="/contact" variant="ghost" className="pl-0 text-primary">Learn More &rarr;</Button>
+                            <Button to="/contact" variant="outline" className="w-full justify-center hover:bg-primary hover:border-primary">
+                                Get Started
+                            </Button>
                         </div>
                     ))}
                 </div>
+            </section>
 
-                {/* CTA Section */}
-                <div className="glass-card p-12 text-center rounded-3xl relative overflow-hidden">
+            {/* CTA */}
+            <section className="container py-20">
+                <div className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-12 text-center text-white relative overflow-hidden shadow-2xl">
                     <div className="relative z-10">
-                        <h2 className="text-3xl font-bold mb-6">Ready to Scale?</h2>
-                        <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-                            Let's discuss how we can help your business grow. Schedule a free consultation today.
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Idea?</h2>
+                        <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto">
+                            Let's discuss how our premium services can help your business reach new heights.
                         </p>
-                        <Button to="/contact" variant="primary" className="mx-auto">Get a Quote</Button>
+                        <Button to="/contact" variant="outline" className="bg-white text-primary border-none hover:bg-slate-100 h-12 px-8">
+                            Start Your Project
+                        </Button>
                     </div>
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-[80px]"></div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }

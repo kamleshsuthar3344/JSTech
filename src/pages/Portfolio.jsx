@@ -1,56 +1,103 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Layout, Smartphone, Globe } from 'lucide-react';
 import Button from '../components/ui/Button';
 
 export default function Portfolio() {
     const [filter, setFilter] = useState('All');
 
-    const categories = ['All', 'Web Design', 'Branding', 'Marketing'];
+    const categories = ['All', 'Web Application', 'E-commerce', 'Corporate', 'Real Estate'];
 
+    // Projects fetch from kamleshsuthar.vercel.app
     const projects = [
         {
             id: 1,
-            title: "Neon FinTech",
-            category: "Web Design",
+            title: "Earningsharthi",
+            category: "Web Application",
             image: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
-            desc: "Complete UI/UX overhaul for a banking app."
+            desc: "A comprehensive earnings management platform.",
+            link: "https://earningsharthi.in/"
         },
         {
             id: 2,
-            title: "EcoGreen Energy",
-            category: "Branding",
+            title: "KP Realtors Group",
+            category: "Real Estate",
             image: "linear-gradient(135deg, #064e3b 0%, #065f46 100%)",
-            desc: "Brand identity and eco-friendly messaging."
+            desc: "Real estate listing and management website.",
+            link: "https://kprealtorsgroup.com/"
         },
         {
             id: 3,
-            title: "Urban Coffee",
-            category: "Marketing",
+            title: "Akashdeep Hotel",
+            category: "Corporate",
             image: "linear-gradient(135deg, #78350f 0%, #92400e 100%)",
-            desc: "Social media campaign increasing footfall by 40%."
+            desc: "Hotel booking and information portal.",
+            link: "http://akashdeephotel.com/"
         },
         {
             id: 4,
-            title: "TechFlow SaaS",
-            category: "Web Design",
-            image: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
-            desc: "High-conversion landing page for B2B software."
+            title: "SS Knitwears",
+            category: "E-commerce",
+            image: "linear-gradient(135deg, #831843 0%, #be185d 100%)",
+            desc: "E-commerce platform for knitwear products.",
+            link: "https://ssknitwears.com/"
         },
         {
             id: 5,
-            title: "Pixel Art Gallery",
-            category: "Branding",
-            image: "linear-gradient(135deg, #831843 0%, #be185d 100%)",
-            desc: "Visual identity for a digital art marketplace."
+            title: "The Nivy",
+            category: "Corporate",
+            image: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
+            desc: "Corporate portfolio for The Nivy.",
+            link: "https://thenivy.com/"
         },
         {
             id: 6,
-            title: "Fitness Pro",
-            category: "Marketing",
+            title: "Care The Nivy",
+            category: "Web Application",
             image: "linear-gradient(135deg, #14532d 0%, #166534 100%)",
-            desc: "Influencer marketing strategy for gym equipment."
+            desc: "Healthcare support and management system.",
+            link: "https://care.thenivy.com/"
         },
+        {
+            id: 7,
+            title: "Mahareave",
+            category: "Web Application",
+            image: "linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%)",
+            desc: "Dynamic web application for Mahareave.",
+            link: "https://mahareave.com/"
+        },
+        {
+            id: 8,
+            title: "Globe Communication UK",
+            category: "Corporate",
+            image: "linear-gradient(135deg, #0f766e 0%, #115e59 100%)",
+            desc: "Corporate website for a UK communication firm.",
+            link: "https://globecommunicationuk.com/"
+        },
+        {
+            id: 9,
+            title: "Vishwakarma Trading",
+            category: "E-commerce",
+            image: "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
+            desc: "Internal trading management system.",
+            link: "#"
+        },
+        {
+            id: 10,
+            title: "Go Bhart Dharsan",
+            category: "Web Application",
+            image: "linear-gradient(135deg, #be123c 0%, #9f1239 100%)",
+            desc: "Travel verification and booking platform.",
+            link: "#"
+        },
+        {
+            id: 11,
+            title: "Growth Service",
+            category: "Web Application",
+            image: "linear-gradient(135deg, #0369a1 0%, #075985 100%)",
+            desc: "Marketing growth analytics dashboard.",
+            link: "#"
+        }
     ];
 
     const filteredProjects = filter === 'All'
@@ -65,9 +112,9 @@ export default function Portfolio() {
 
             <div className="container">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Work</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Masterpieces</h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-                        A showcase of our best campaigns, designs, and strategies.
+                        Transforming ideas into exceptional digital experiences.
                     </p>
                 </div>
 
@@ -90,33 +137,47 @@ export default function Portfolio() {
                 {/* Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProjects.map((project) => (
-                        <div key={project.id} className="group relative overflow-hidden rounded-2xl glass-card">
-                            {/* Image Placeholder */}
+                        <div key={project.id} className="group overflow-hidden rounded-2xl glass-card border border-slate-700/50 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                            {/* Gradient Placeholder / Image */}
                             <div
-                                className="h-64 w-full transition-transform duration-500 group-hover:scale-110"
+                                className="h-56 w-full flex items-center justify-center relative overflow-hidden shrink-0"
                                 style={{ background: project.image }}
-                            ></div>
+                            >
+                                <Layout className="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-500" />
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                            </div>
 
-                            {/* Overlay Content */}
-                            <div className="absolute inset-0 bg-slate-900/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-center p-6">
-                                <span className="text-primary font-bold text-sm mb-2">{project.category}</span>
-                                <h3 className="text-2xl font-bold mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{project.title}</h3>
-                                <p className="text-slate-300 mb-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{project.desc}</p>
-                                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
-                                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                                        View Case Study <ExternalLink className="w-4 h-4" />
-                                    </Button>
+                            {/* Content Below */}
+                            <div className="p-6 flex flex-col flex-1">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <span className="text-primary text-xs font-bold uppercase tracking-wider mb-1 block">{project.category}</span>
+                                        <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">{project.title}</h3>
+                                    </div>
+                                </div>
+
+                                <p className="text-slate-400 text-sm mb-6 line-clamp-2 min-h-[40px] flex-1">{project.desc}</p>
+
+                                <div className="pt-4 border-t border-slate-800 mt-auto">
+                                    {project.link !== "#" ? (
+                                        <a
+                                            href={project.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 text-white font-medium hover:text-primary transition-colors text-sm"
+                                        >
+                                            View Project <ExternalLink className="w-4 h-4" />
+                                        </a>
+                                    ) : (
+                                        <span className="text-slate-600 text-sm flex items-center gap-2">
+                                            <Globe className="w-4 h-4" /> Internal
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-
-                {filteredProjects.length === 0 && (
-                    <div className="text-center py-20 text-slate-500">
-                        No projects found in this category.
-                    </div>
-                )}
             </div>
         </div>
     );
